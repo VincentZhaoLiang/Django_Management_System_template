@@ -92,10 +92,10 @@ WSGI_APPLICATION = "Learntest.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangolearntest',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
+        'NAME': 'locbatch',
+        'USER': 'admin',
+        'PASSWORD': 'ErtgX1VqCqx1X06PYyhW',
+        'HOST': 'tawa2-mysql-dev.chkg6ncbqzdx.us-west-1.rds.amazonaws.com',
         'PORT': '3306',
     }
 }

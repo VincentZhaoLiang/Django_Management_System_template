@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Article Number Query Results</h2>
+    {% if results %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article Number</th>
+                    <th>Article Name</th>
+                    <th>UPC</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.article_number }}</td>
+                        <td>{{ result.article_name }}</td>
+                        <td>{{ result.upc }}</td>
+                        <!-- Add more data fields as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</div>
+{% endblock %}

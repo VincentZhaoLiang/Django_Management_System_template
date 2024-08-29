@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app01 import views
-from app01.srcs.views import departments, myadmin, number, user, account, task, order
+from app01.srcs.views import departments, myadmin, number, user, account, task, order, batch
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -27,6 +28,9 @@ urlpatterns = [
     path("depart/add", departments.depart_add),
     path("depart/<int:nid>/edit/", departments.depart_edit),
     path("depart/delete/", departments.depart_delete),
+
+    path("batch/list", batch.batchdata_list),
+    path('batch/query_article_number', batch.query_article_number, name='query_article_number'),
 
     path("user/list", user.user_list),
     path("user/add", user.user_add),

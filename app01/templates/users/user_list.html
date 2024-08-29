@@ -7,14 +7,14 @@
             <div class="col-md-7 col-sm-4" >
             <a class="btn btn-success" style="margin: 10px" href="/user/add" target="_blank"> {# blank表示在新页面打开#}
                 <i class="bi bi-plus-circle-fill"></i>
-                添加用户
+                Add User
             </a>
             </div>
             <div class="col-md-5 col-sm-8 ">
                 <form method="get">
                 <div class="d-flex flex-row">
-                    <input class="form-control me-2" type="search" name="q" value="{{ search_data }}" style="margin: 10px" placeholder="搜索" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit" style="margin: 10px; width: 100px"><strong>搜索</strong></button>
+                    <input class="form-control me-2" type="search" name="q" value="{{ search_data }}" style="margin: 10px" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" style="margin: 10px; width: 100px"><strong>Search</strong></button>
                 </div>
                 </form>
             </div>
@@ -22,20 +22,20 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-dark">
                 <i class="bi bi-calendar2-event-fill"></i>
-                <strong>用户列表</strong>
+                <strong>User List</strong>
             </li>
             <li class="list-group-item">
                 <table class="table">
                       <thead>
                         <tr>
                           <th scope="col">ID</th>
-                          <th scope="col">姓名</th>
-                            <th scope="col">性别</th>
-                            <th scope="col">年龄</th>
-                          <th scope="col">账户余额</th>
-                            <th scope="col">加入日期</th>
-                          <th scope="col">所属部门</th>
-                          <th scope="col">操作</th>
+                          <th scope="col">UserName</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Age</th>
+                          <th scope="col">AccountBalance</th>
+                            <th scope="col">Create Date</th>
+                          <th scope="col">Dept</th>
+                          <th scope="col">Operation</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -49,8 +49,8 @@
                             <td>{{ obj.creat_time}}</td>
                             <td>{{ obj.department.title}}</td>
                           <td>
-                              <a class="btn btn-primary btn-sm" href="/user/{{ obj.user_id }}/edit">编辑</a>
-                              <a class="btn btn-danger btn-sm" href="/user/delete/?nid={{ obj.user_id }}">删除</a>
+                              <a class="btn btn-primary btn-sm" href="/user/{{ obj.user_id }}/edit">Edit</a>
+                              <a class="btn btn-danger btn-sm" href="/user/delete/?nid={{ obj.user_id }}">Delete</a>
                           </td>
                         </tr>
                       {% endfor %}

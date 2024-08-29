@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 col-sm-4">
+            <button id="addRowBtn" class="btn btn-success" style="margin: 10px">
+                <i class="bi bi-plus-circle-fill"></i>
+                Add Data
+            </button>
+        </div>
+        <div class="col-md-5 col-sm-8">
+            <form method="get">
+                <div class="d-flex flex-row">
+                    <input class="form-control me-2" type="search" name="q" value="{{ search_data }}" style="margin: 10px" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" style="margin: 10px; width: 100px"><strong>Search</strong></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-dark">
+            <i class="bi bi-calendar2-event-fill"></i>
+            <strong>Data Input Form</strong>
+        </li>
+        <li class="list-group-item">
+            <form id="dataForm">
+                <table class="table" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Store Number</th>
+                            <th scope="col">Article Number</th>
+                            <th scope="col">UPC</th>
+                            <th scope="col">Item Name CN</th>
+                            <th scope="col">Item Name EN</th>
+                            <th scope="col">UOM</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="storeno" class="form-control" required></td>
+                            <td><input type="text" name="articlenumber" class="form-control articlenumber" required></td>
+                            <td><input type="text" name="upc" class="form-control" required></td>
+                            <td><input type="text" name="Itemnamecn" class="form-control" required></td>
+                            <td><input type="text" name="itemnameen" class="form-control" required></td>
+                            <td><input type="text" name="uom" class="form-control" required></td>
+                            <td><input type="text" name="Saleprice" class="form-control" required></td>
+                            <td><input type="text" name="department" class="form-control" required></td>
+                            <td>
+                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <div id="formErrors" class="error"></div>
+        </li>
+    </ul>
+    <div style="display: flex; justify-content: center;">
+        {{ page_nav_string }}
+    </div>
+</div>
+
+<script>
+// 动态添加新行
+document.getElementById('addRowBtn').addEventListener('click', function() {
+    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    const columns = ['storeno', 'articlenumber', 'upc', 'Itemnamecn', 'itemnameen', 'uom', 'Saleprice', 'department'];
+    columns.forEach(column => {
+        const cell = newRow.insertCell();
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = column;
+        input.className = 'form-control';
+        cell.appendChild(input);
+    });
+
+    const operationCell = newRow.insertCell();
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.className = 'btn btn-primary btn-sm';
+    submitButton.textContent = 'Submit';
+    operationCell.appendChild(submitButton);
+});
+
+// 弹出查询页面
+document.querySelectorAll('.articlenumber').forEach(function(input) {
+    input.addEventListener('click', function() {
+        // 打开弹出窗口查询数据库
+        const url = '/batch/query_article_number'; // 替换为查询URL
+        window.open(url, 'popup', 'width=600,height=400,scrollbars=yes');
+    });
+});
+</script>
+{% endblock %}
